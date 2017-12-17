@@ -63,7 +63,7 @@ setup(
     ],
     install_requires=[
         # eg: 'aspectlib==1.1.1', 'six>=1.7',
-        'Django>=1.8.5,<1.10',
+        'Django>=1.8.5,<2.0',
         'django-cms>=3.3.3',
         'django-filer>=1.2.6',
         'django-admin-sortable<=2.0.18',
