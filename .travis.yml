@@ -1,5 +1,10 @@
 language: python
-python: '3.5'
+python: 
+  - "3.4"
+  - "3.5"
+  - "3.6"
+  - "pypy"
+  - "pypy3"
 sudo: false
 env:
   global:
@@ -13,6 +18,8 @@ env:
     - TOXENV=3.4-nocov
     - TOXENV=3.5-cover,codecov
     - TOXENV=3.5-nocov
+    - TOXENV=3.6-cover,codecov
+    - TOXENV=3.6-nocov
     - TOXENV=pypy-cover,codecov
     - TOXENV=pypy-nocov
 before_install:
