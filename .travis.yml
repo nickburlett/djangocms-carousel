@@ -1,21 +1,66 @@
 language: python
-python: 
-  - "3.4"
-  - "3.5"
-  - "3.6"
-  - "pypy"
-  - "pypy3"
+
+python: 3.6
+
+# Use container based infrastructure
 sudo: false
+
 env:
   global:
     - LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so
     - SEGFAULT_SIGNALS=all
+
+matrix:
+  include:
+    - python: '3.6'
+      env: TOXENV=check
+    - python: '3.6'
+      env: TOXENV=docs
+    - python: '3.6'
+      env: TOXENV=py36-dj111-cms34
+    - python: '3.5'
+      env: TOXENV=py35-dj19-cms33
+    - python: '3.5'
+      env: TOXENV=py35-dj18-cms33
+    - python: '3.4'
+      env: TOXENV=py34-dj19-cms33
+    - python: '3.4'
+      env: TOXENV=py34-dj18-cms33
+    - python: '2.7'
+      env: TOXENV=py27-dj19-cms33
+    - python: '2.7'
+      env: TOXENV=py27-dj18-cms33
+    - python: '3.5'
+      env: TOXENV=py35-dj111-cms34
+    - python: '3.5'
+      env: TOXENV=py35-dj110-cms34
+    - python: '3.5'
+      env: TOXENV=py35-dj19-cms34
+    - python: '3.5'
+      env: TOXENV=py35-dj18-cms34
+    - python: '3.4'
+      env: TOXENV=py34-dj111-cms34
+    - python: '3.4'
+      env: TOXENV=py34-dj110-cms34
+    - python: '3.4'
+      env: TOXENV=py34-dj19-cms34
+    - python: '3.4'
+      env: TOXENV=py34-dj18-cms34
+    - python: '2.7'
+      env: TOXENV=py27-dj111-cms34
+    - python: '2.7'
+      env: TOXENV=py27-dj110-cms34
+    - python: '2.7'
+      env: TOXENV=py27-dj19-cms34
+    - python: '2.7'
+      env: TOXENV=py27-dj18-cms34
+
 before_install:
   - python --version
   - uname -a
   - lsb_release -a
 install:
-  - pip install tox-travis
+  - pip install tox
   - virtualenv --version
   - easy_install --version
   - pip --version
